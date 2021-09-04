@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Things/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Things/Player/player.png" type="Texture" id=2]
@@ -6,6 +6,18 @@
 [ext_resource path="res://Things/Player/arm_right.png" type="Texture" id=4]
 [ext_resource path="res://Things/Player/leg_right.png" type="Texture" id=5]
 [ext_resource path="res://Things/Player/leg_left.png" type="Texture" id=6]
+[ext_resource path="res://Things/Player/turn5.wav" type="AudioStream" id=7]
+[ext_resource path="res://Things/RandomAudioPlayer/RandomAudioPlayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Things/Player/turn1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Things/Player/turn3.wav" type="AudioStream" id=10]
+[ext_resource path="res://Things/Player/turn2.wav" type="AudioStream" id=11]
+[ext_resource path="res://Things/Player/turn4.wav" type="AudioStream" id=12]
+[ext_resource path="res://Things/Player/whee3.wav" type="AudioStream" id=13]
+[ext_resource path="res://Things/Player/whee2.wav" type="AudioStream" id=14]
+[ext_resource path="res://Things/Player/whee1.wav" type="AudioStream" id=15]
+[ext_resource path="res://Things/Player/fall2.wav" type="AudioStream" id=16]
+[ext_resource path="res://Things/Player/fall.wav" type="AudioStream" id=17]
+[ext_resource path="res://Things/Player/fall3.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -114,8 +126,43 @@ tracks/3/keys = {
 [sub_resource type="CircleShape2D" id=3]
 radius = 32.6605
 
+[sub_resource type="AudioStreamRandomPitch" id=9]
+audio_stream = ExtResource( 15 )
+
+[sub_resource type="AudioStreamRandomPitch" id=10]
+audio_stream = ExtResource( 14 )
+
+[sub_resource type="AudioStreamRandomPitch" id=11]
+audio_stream = ExtResource( 13 )
+
+[sub_resource type="AudioStreamRandomPitch" id=5]
+audio_stream = ExtResource( 9 )
+
+[sub_resource type="AudioStreamRandomPitch" id=6]
+audio_stream = ExtResource( 11 )
+
+[sub_resource type="AudioStreamRandomPitch" id=7]
+audio_stream = ExtResource( 10 )
+
+[sub_resource type="AudioStreamRandomPitch" id=8]
+audio_stream = ExtResource( 12 )
+
+[sub_resource type="AudioStreamRandomPitch" id=4]
+audio_stream = ExtResource( 7 )
+
+[sub_resource type="AudioStreamRandomPitch" id=12]
+audio_stream = ExtResource( 17 )
+
+[sub_resource type="AudioStreamRandomPitch" id=13]
+audio_stream = ExtResource( 16 )
+
+[sub_resource type="AudioStreamRandomPitch" id=14]
+audio_stream = ExtResource( 18 )
+
 [node name="Player" type="RigidBody2D"]
 gravity_scale = 4.0
+contacts_reported = 1
+contact_monitor = true
 sleeping = true
 script = ExtResource( 1 )
 
@@ -155,6 +202,60 @@ shape = SubResource( 3 )
 
 [node name="GroundColTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="WheeSound" parent="." instance=ExtResource( 8 )]
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="WheeSound"]
+stream = SubResource( 9 )
+volume_db = 15.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WheeSound"]
+stream = SubResource( 10 )
+volume_db = 15.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="WheeSound"]
+stream = SubResource( 11 )
+volume_db = 15.0
+
+[node name="TurnSound" parent="." instance=ExtResource( 8 )]
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 5 )
+volume_db = 10.0
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 6 )
+volume_db = 10.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 7 )
+volume_db = 10.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 8 )
+volume_db = 10.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 4 )
+volume_db = 10.0
+
+[node name="FallSound" parent="." instance=ExtResource( 8 )]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FallSound"]
+stream = SubResource( 12 )
+volume_db = 7.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="FallSound"]
+stream = SubResource( 13 )
+volume_db = 7.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="FallSound"]
+stream = SubResource( 14 )
+volume_db = 7.0
+
+[node name="OofTimer" type="Timer" parent="."]
+wait_time = 0.8
 one_shot = true
 
 [connection signal="timeout" from="GroundColTimer" to="." method="_on_GroundColTimer_timeout"]

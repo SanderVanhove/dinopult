@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Things/Player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "RandomStreamPlayer",
+"language": "GDScript",
+"path": "res://Things/RandomAudioPlayer/RandomAudioPlayer.gd"
 } ]
 _global_script_class_icons={
 "Catapult": "",
-"Player": ""
+"Player": "",
+"RandomStreamPlayer": ""
 }
 
 [application]

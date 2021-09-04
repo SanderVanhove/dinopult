@@ -11,6 +11,7 @@ onready var particles1: CPUParticles2D = $CPUParticles2D
 onready var particles2: CPUParticles2D = $CPUParticles2D2
 onready var sprite: Sprite = $Sprite
 onready var area: Area2D = $Area2D
+onready var bite_sound: RandomStreamPlayer = $RandomAudioPlayer
 
 
 func _ready():
@@ -29,6 +30,8 @@ func _on_Area2D_body_entered(body):
 		return
 		
 	emit_signal("collected")
+	
+	bite_sound.play()
 	
 	sprite.visible = false
 	area.monitoring = false

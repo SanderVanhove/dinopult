@@ -4,6 +4,8 @@ class_name Catapult
 const MAX_DIST: float = 100.0
 
 onready var _player: Player = $Player
+onready var _audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+onready var _fire_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 
 onready var _elastic_front: Line2D = $ElasticFront
 onready var _elastic_back: Line2D = $ElasticBack
@@ -14,6 +16,7 @@ onready var _elastic_return_tween: Tween = $ElasticReturn
 
 var is_pulling: bool = false
 var player_in: bool = true
+var is_allowed_to_fire: bool = true
 var click_position: Vector2 = Vector2.ZERO
 
 
@@ -44,6 +47,7 @@ func _input(event):
 	if player_in and event.pressed:
 		is_pulling = true
 		click_position = get_viewport().get_mouse_position()
+		_audio.play()
 		
 	if is_pulling and not event.pressed:
 		if get_pull_dist().length() < 10:
@@ -51,6 +55,9 @@ func _input(event):
 			return
 		
 		_player.launche(-get_pull_dist() * 15)
+		
+		_fire_audio.play()
+		_audio.stop()
 	
 		is_pulling = false
 		player_in = false
@@ -89,6 +96,7 @@ func _on_ClickArea_body_entered(body):
 	if player_in:
 		return
 	
+	_player.set_on_catapult()
 	_elastic_return_tween.interpolate_property(_player, "global_transform:origin", _player.global_transform.origin, position, .2, Tween.TRANS_BACK, Tween.EASE_OUT)
 	_elastic_return_tween.start()
 	yield(_elastic_return_tween, "tween_all_completed")
