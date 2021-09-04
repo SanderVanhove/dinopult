@@ -11,7 +11,7 @@ var is_launched: bool = false
 
 
 func _ready():
-	set_bounce(.1)
+	set_bounce(.25)
 
 
 func _process(delta):
