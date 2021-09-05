@@ -1,0 +1,240 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Shaders/wind.gdshader" type="Shader" id=1]
+[ext_resource path="res://Things/UI/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Things/UI/BalsamiqSans-Italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Screens/Level/foreground_bushes.png" type="Texture" id=4]
+[ext_resource path="res://Screens/Level/distant_ground.png" type="Texture" id=5]
+[ext_resource path="res://Screens/Level/background_bush.png" type="Texture" id=6]
+[ext_resource path="res://Screens/Level/grass.png" type="Texture" id=7]
+[ext_resource path="res://Screens/Level/background.png" type="Texture" id=8]
+[ext_resource path="res://Screens/Level/clouds.png" type="Texture" id=9]
+[ext_resource path="res://Screens/Level/ground.png" type="Texture" id=10]
+[ext_resource path="res://Screens/Menu/Menu.gd" type="Script" id=11]
+[ext_resource path="res://Things/UI/button_normal.tres" type="StyleBox" id=12]
+[ext_resource path="res://Things/UI/button_hover.tres" type="StyleBox" id=13]
+[ext_resource path="res://Things/UI/credits_font.tres" type="DynamicFont" id=14]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+
+uniform float speed;
+
+
+void fragment () {
+	COLOR = texture(TEXTURE, vec2(UV.x + TIME * speed, UV.y));
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/speed = 0.01
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 1 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.038
+shader_param/maxStrength = 0.057
+shader_param/strengthScale = 100.0
+shader_param/interval = 6.0
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = null
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 1 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.028
+shader_param/maxStrength = 0.191
+shader_param/strengthScale = 100.0
+shader_param/interval = 4.0
+shader_param/detail = 2.0
+shader_param/distortion = 1.0
+shader_param/heightOffset = 0.233
+shader_param/offset = 3.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 1 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.131
+shader_param/maxStrength = 0.3
+shader_param/strengthScale = 100.0
+shader_param/interval = 3.0
+shader_param/detail = 3.0
+shader_param/distortion = 1.0
+shader_param/heightOffset = 0.791
+shader_param/offset = 0.0
+
+[sub_resource type="DynamicFont" id=9]
+size = 155
+outline_size = 9
+outline_color = Color( 0.337255, 0.313726, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 36
+outline_color = Color( 0.0235294, 0.0745098, 0.568627, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 65
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="background" type="Sprite" parent="Environment"]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="distant_ground" type="Sprite" parent="Environment"]
+position = Vector2( 1017.33, 1014.77 )
+texture = ExtResource( 5 )
+
+[node name="clouds" type="Sprite" parent="Environment"]
+material = SubResource( 2 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="background_bush" type="Sprite" parent="Environment"]
+material = SubResource( 3 )
+position = Vector2( 948.64, 860.723 )
+texture = ExtResource( 6 )
+
+[node name="foreground_bushes" type="Sprite" parent="Environment"]
+material = SubResource( 4 )
+position = Vector2( 1208.96, 842.245 )
+texture = ExtResource( 4 )
+
+[node name="grass" type="Sprite" parent="Environment"]
+material = SubResource( 5 )
+position = Vector2( 1263.03, 936.432 )
+texture = ExtResource( 7 )
+
+[node name="ground" type="Sprite" parent="Environment"]
+position = Vector2( 949.516, 1063.48 )
+texture = ExtResource( 10 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1922.0
+margin_bottom = 1082.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+margin_left = 667.0
+margin_top = 183.0
+margin_right = 1254.0
+margin_bottom = 898.0
+custom_constants/separation = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
+margin_right = 587.0
+margin_bottom = 233.0
+custom_constants/separation = 2
+
+[node name="Title" type="Label" parent="Control/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_right = 587.0
+margin_bottom = 187.0
+custom_fonts/font = SubResource( 9 )
+text = "Dinopult"
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 189.0
+margin_right = 587.0
+margin_bottom = 233.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.470588, 0.85098, 1, 1 )
+text = "By @SanderVhove"
+align = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+margin_top = 633.0
+margin_right = 587.0
+margin_bottom = 715.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 8 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 601.641
+margin_top = 1029.43
+margin_right = 1319.64
+margin_bottom = 1063.43
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.87451, 0.87451, 0.87451, 1 )
+text = "*No dinosaurs were harmed during the making of this game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_left = 690.916
+margin_top = 556.886
+margin_right = 1161.92
+margin_bottom = 628.886
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_right = 471.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+margin_right = 165.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 14 )
+text = "Thanks to my "
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+margin_left = 169.0
+margin_right = 265.0
+margin_bottom = 34.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.470588, 0.85098, 1, 1 )
+text = "Patreon"
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+margin_left = 269.0
+margin_right = 274.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 14 )
+text = ":"
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+margin_top = 38.0
+margin_right = 471.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 14 )
+text = "Gilles De Mey"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="Control/CenterContainer/VBoxContainer/VBoxContainer/Label" to="." method="_on_Label_gui_input"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="gui_input" from="Control/VBoxContainer/HBoxContainer/Label2" to="." method="_on_Label2_gui_input"]

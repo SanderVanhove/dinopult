@@ -459,7 +459,7 @@ text = "Click/tap to make your little dino change direction mid air by flailing 
 title = "Going again"
 text = "Make sure you get back to the catapult before you stop moving.
 
-If you get stuck, just use the reset button."
+If you get stuck, just use the RETRY button."
 
 [connection signal="fired" from="Catapult" to="." method="_on_Catapult_fired"]
 [connection signal="pressed" from="UI/Button" to="." method="_on_Button_pressed"]

@@ -39,7 +39,10 @@ _global_script_class_icons={
 [application]
 
 config/name="Dinopult"
-run/main_scene="res://Screens/Level/Level.tscn"
+run/main_scene="res://Screens/Splash/Splash.tscn"
+boot_splash/image="res://Screens/Splash/splash_screen.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.984314, 0.921569, 0.890196, 1 )
 config/icon="res://icon.png"
 
 [display]

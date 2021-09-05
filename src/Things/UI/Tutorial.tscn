@@ -11,6 +11,9 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color( 0, 0, 0, 0.611765 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 76
@@ -50,7 +53,7 @@ margin_left = 557.0
 margin_top = 315.0
 margin_right = 1357.0
 margin_bottom = 765.0
-rect_min_size = Vector2( 800, 450 )
+rect_min_size = Vector2( 800, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 custom_styles/panel = SubResource( 1 )
@@ -61,14 +64,15 @@ margin_bottom = 450.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 custom_constants/margin_right = 30
-custom_constants/margin_top = 12
+custom_constants/margin_top = 16
 custom_constants/margin_left = 30
+custom_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 margin_left = 30.0
-margin_top = 12.0
+margin_top = 16.0
 margin_right = 770.0
-margin_bottom = 450.0
+margin_bottom = 426.0
 mouse_default_cursor_shape = 2
 custom_constants/separation = 43
 
@@ -78,7 +82,6 @@ margin_bottom = 92.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 2 )
-text = "How to play"
 align = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -88,9 +91,6 @@ margin_bottom = 331.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 custom_fonts/normal_font = SubResource( 3 )
-text = "Click/tap and drag to chose dinopult strength & angle.
-
-Collect all the leafs!"
 fit_content_height = true
 
 [node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]

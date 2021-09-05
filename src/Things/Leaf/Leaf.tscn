@@ -39,7 +39,7 @@ shape = SubResource( 1 )
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 50
+amount = 20
 lifetime = 0.2
 one_shot = true
 explosiveness = 0.9
@@ -55,7 +55,7 @@ color_ramp = SubResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 50
+amount = 20
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.98
