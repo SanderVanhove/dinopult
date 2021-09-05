@@ -12,7 +12,9 @@ onready var oof_timer: Timer = $OofTimer
 
 
 var is_launched: bool = false
+var can_turn: bool = true
 var did_oof: bool = false
+var movement_before_sleep: Vector2
 
 
 func _ready():
@@ -47,10 +49,20 @@ func set_on_catapult():
 	turn_sound.play()
 
 
+func sleep(is_sleeping):
+	sleeping = is_sleeping
+	can_turn = not is_sleeping
+	
+	if is_sleeping:
+		movement_before_sleep = linear_velocity
+	else:
+		linear_velocity = movement_before_sleep
+
+
 func _input(event):
 	if not event as InputEventMouseButton or event.pressed:
 		return
-	if not is_launched:
+	if not is_launched or not can_turn:
 		return
 		
 	turn_sound.play()

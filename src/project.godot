@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "RandomStreamPlayer",
 "language": "GDScript",
 "path": "res://Things/RandomAudioPlayer/RandomAudioPlayer.gd"
+}, {
+"base": "Control",
+"class": "Tutorial",
+"language": "GDScript",
+"path": "res://Things/UI/Tutorial.gd"
 } ]
 _global_script_class_icons={
 "Catapult": "",
 "Player": "",
-"RandomStreamPlayer": ""
+"RandomStreamPlayer": "",
+"Tutorial": ""
 }
 
 [application]

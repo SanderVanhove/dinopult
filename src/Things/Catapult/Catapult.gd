@@ -1,5 +1,6 @@
 extends Node2D
 class_name Catapult
+signal fired
 
 const MAX_DIST: float = 100.0
 
@@ -28,6 +29,11 @@ func reset():
 	update_elastic(Vector2.ZERO)
 	is_pulling = false
 	player_in = true
+	
+
+func sleep(is_sleeping: bool):
+	is_allowed_to_fire = not is_sleeping
+	_player.sleep(is_sleeping)
 
 
 func _process(delta):
@@ -42,6 +48,9 @@ func _process(delta):
 
 func _input(event):
 	if not event as InputEventMouseButton:
+		return
+	
+	if not is_allowed_to_fire:
 		return
 
 	if player_in and event.pressed:
@@ -64,6 +73,8 @@ func _input(event):
 		
 		_elastic_return_tween.interpolate_method(self, "update_elastic", _player.position, Vector2.ZERO, .8, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		_elastic_return_tween.start()
+		
+		emit_signal("fired")
 
 
 func update_elastic(mid: Vector2):
