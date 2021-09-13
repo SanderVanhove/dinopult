@@ -1,6 +1,9 @@
 extends Node2D
 
 
+onready var _click_audio: AudioStreamPlayer = $ClickAudio
+
+
 func _ready():
 	pass
 
@@ -13,6 +16,8 @@ func _on_Label_gui_input(event):
 
 
 func _on_Button_pressed():
+	_click_audio.play()
+	yield(_click_audio, "finished")
 	get_tree().change_scene("res://Screens/StorySlide/StorySlide.tscn")
 
 

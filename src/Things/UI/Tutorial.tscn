@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Things/UI/BalsamiqSans-Italic.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Things/UI/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Things/UI/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Things/UI/Tutorial.gd" type="Script" id=4]
+[ext_resource path="res://Things/UI/click.ogg" type="AudioStream" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.45098, 0.321569, 0.101961, 1 )
@@ -19,15 +20,15 @@ shadow_offset = Vector2( 5, 5 )
 size = 76
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 42
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 39
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -94,8 +95,8 @@ margin_right = 740.0
 margin_bottom = 331.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_fonts/bold_font = SubResource( 5 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
 fit_content_height = true
 
@@ -105,11 +106,15 @@ margin_right = 740.0
 margin_bottom = 405.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Click/tap to continue"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.0
 
 [connection signal="gui_input" from="." to="." method="_on_Control_gui_input"]

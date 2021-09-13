@@ -11,6 +11,8 @@ onready var _tutorial_timer: Timer = $Tutorials/TutorialTimer
 
 onready var _end_timer: Timer = $EndOfLevelTimer
 
+onready var _click_audio: AudioStreamPlayer = $ClickAudio
+
 var collected_leafs = 0
 
 
@@ -38,6 +40,8 @@ func _on_Button_pressed():
 		leaf.reset()
 
 	collected_leafs = 0
+
+	_click_audio.play()
 
 
 func show_tutorial(tutorial: Tutorial):

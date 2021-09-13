@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Screens/StorySlide/StorySlide.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Screens/StorySlide/slide4.png" type="Texture" id=2]
+[ext_resource path="res://Screens/StorySlide/story4.ogg" type="AudioStream" id=3]
 
 [node name="StorySlide4" instance=ExtResource( 1 )]
 nextScene = "res://Screens/Menu/Menu.tscn"
@@ -10,33 +11,36 @@ nextScene = "res://Screens/Menu/Menu.tscn"
 texture = ExtResource( 2 )
 
 [node name="RichTextLabel" parent="." index="1"]
-margin_left = 1073.0
+margin_left = 941.0
 margin_top = 86.0
 margin_right = 1798.0
 margin_bottom = 622.0
 bbcode_text = "[center]
 He never felt so full and his belly, it bulged
-There were to much leafs on the tree he indulged
+There were to much leafs on the tree he indulged.
 
 His mom rolled her eyes and let out another sigh
-[i]\"I told you [wave]we don't eat leafs[/wave] and I hope you now know why\"[/i]
+[i]\"I told you [wave]we don't eat leafs[/wave] and I hope you now know why.\"[/i]
 
-[i]\"Oh mommy I wish I never wanted to be so tall
-now I feel [shake]sick[/shake] and size doesn't matter to me at all\"[/i]
+[i]\"Oh mother I wish I never wanted to be so tall
+now I feel [shake]sick[/shake] and size doesn't matter to me at all.\"[/i]
 
 The End
 Thanks for playing!
 [/center]"
 text = "
 He never felt so full and his belly, it bulged
-There were to much leafs on the tree he indulged
+There were to much leafs on the tree he indulged.
 
 His mom rolled her eyes and let out another sigh
-\"I told you we don't eat leafs and I hope you now know why\"
+\"I told you we don't eat leafs and I hope you now know why.\"
 
-\"Oh mommy I wish I never wanted to be so tall
-now I feel sick and size doesn't matter to me at all\"
+\"Oh mother I wish I never wanted to be so tall
+now I feel sick and size doesn't matter to me at all.\"
 
 The End
 Thanks for playing!
 "
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 3 )

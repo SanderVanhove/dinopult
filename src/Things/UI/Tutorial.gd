@@ -10,6 +10,7 @@ export(String, MULTILINE) var text: String
 
 onready var _title: Label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label
 onready var _text: RichTextLabel = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RichTextLabel
+onready var _click_audio: AudioStreamPlayer = $ClickAudio
 
 
 func _ready():
@@ -22,6 +23,9 @@ func _on_Control_gui_input(event):
 		return
 
 	get_tree().set_input_as_handled()
+
+	_click_audio.play()
+	yield(_click_audio, "finished")
 	emit_signal("clicked")
 	queue_free()
 

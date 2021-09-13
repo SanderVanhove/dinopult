@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Shaders/wind.shader" type="Shader" id=1]
 [ext_resource path="res://Things/UI/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Things/UI/button_normal.tres" type="StyleBox" id=12]
 [ext_resource path="res://Things/UI/button_hover.tres" type="StyleBox" id=13]
 [ext_resource path="res://Things/UI/credits_font.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Things/UI/click.ogg" type="AudioStream" id=15]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -234,6 +235,10 @@ text = "Gilles De Mey"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = 5.0
 
 [connection signal="gui_input" from="Control/CenterContainer/VBoxContainer/VBoxContainer/Label" to="." method="_on_Label_gui_input"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
