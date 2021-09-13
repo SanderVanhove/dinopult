@@ -5,17 +5,17 @@
 [ext_resource path="res://Things/Catapult/catapult_left.png" type="Texture" id=3]
 [ext_resource path="res://Things/Catapult/catapult_right.png" type="Texture" id=4]
 [ext_resource path="res://Things/Catapult/flag.png" type="Texture" id=5]
-[ext_resource path="res://Shaders/wind.gdshader" type="Shader" id=6]
+[ext_resource path="res://Shaders/wind.shader" type="Shader" id=6]
 [ext_resource path="res://Things/Catapult/stretch.wav" type="AudioStream" id=7]
 [ext_resource path="res://Things/Catapult/fire.wav" type="AudioStream" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
 shader_param/speed = 1.0
-shader_param/minStrength = 0.03
-shader_param/maxStrength = 0.005
+shader_param/minStrength = 0.05
+shader_param/maxStrength = 0.01
 shader_param/strengthScale = 100.0
-shader_param/interval = 5.0
+shader_param/interval = 3.5
 shader_param/detail = 1.0
 shader_param/distortion = null
 shader_param/heightOffset = null

@@ -1,11 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Things/Catapult/Catapult.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Screens/Level/ground.png" type="Texture" id=2]
 [ext_resource path="res://Screens/Level/foreground_bushes.png" type="Texture" id=3]
 [ext_resource path="res://Screens/Level/background.png" type="Texture" id=4]
 [ext_resource path="res://Screens/Level/distant_ground.png" type="Texture" id=5]
-[ext_resource path="res://Shaders/wind.gdshader" type="Shader" id=6]
+[ext_resource path="res://Shaders/wind.shader" type="Shader" id=6]
 [ext_resource path="res://Screens/Level/background_bush.png" type="Texture" id=7]
 [ext_resource path="res://Screens/Level/clouds.png" type="Texture" id=8]
 [ext_resource path="res://Screens/Level/grass.png" type="Texture" id=9]
@@ -17,7 +17,6 @@
 [ext_resource path="res://Things/Leaf/Leaf.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Things/Leaf/leaf3.png" type="Texture" id=16]
 [ext_resource path="res://Things/Leaf/leaf4.png" type="Texture" id=17]
-[ext_resource path="res://Things/Leaf/leaf1.png" type="Texture" id=18]
 [ext_resource path="res://Things/Leaf/leaf2.png" type="Texture" id=19]
 [ext_resource path="res://Things/UI/Tutorial.tscn" type="PackedScene" id=20]
 
@@ -132,7 +131,7 @@ shape = SubResource( 6 )
 collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BoundingBox"]
-position = Vector2( 999.19, -97.2127 )
+position = Vector2( 1006.32, -127.503 )
 shape = SubResource( 7 )
 
 [node name="tree" type="Sprite" parent="."]
@@ -181,7 +180,7 @@ position = Vector2( 943.956, 624.615 )
 leafe_sprite = ExtResource( 17 )
 
 [node name="Leaf4" parent="Leafs" instance=ExtResource( 15 )]
-position = Vector2( 927.475, 808.907 )
+position = Vector2( 927.475, 810.689 )
 leafe_sprite = ExtResource( 17 )
 
 [node name="Leaf5" parent="Leafs" instance=ExtResource( 15 )]
@@ -196,7 +195,7 @@ position = Vector2( 1355.99, 272.514 )
 leafe_sprite = ExtResource( 17 )
 
 [node name="Leaf8" parent="Leafs" instance=ExtResource( 15 )]
-position = Vector2( 1311.04, 348.927 )
+position = Vector2( 1307.48, 348.927 )
 
 [node name="Leaf9" parent="Leafs" instance=ExtResource( 15 )]
 position = Vector2( 1077.31, 143.659 )
@@ -246,7 +245,6 @@ position = Vector2( 931.97, 303.978 )
 
 [node name="Leaf22" parent="Leafs" instance=ExtResource( 15 )]
 position = Vector2( 858.552, 178.119 )
-leafe_sprite = ExtResource( 18 )
 
 [node name="Leaf23" parent="Leafs" instance=ExtResource( 15 )]
 position = Vector2( 933.468, 465.795 )
@@ -297,7 +295,7 @@ position = Vector2( 1547.77, 738.486 )
 leafe_sprite = ExtResource( 16 )
 
 [node name="Leaf37" parent="Leafs" instance=ExtResource( 15 )]
-position = Vector2( 1376.97, 722.005 )
+position = Vector2( 1375.19, 722.005 )
 
 [node name="Leaf38" parent="Leafs" instance=ExtResource( 15 )]
 position = Vector2( 1149.22, 495.76 )
@@ -388,11 +386,11 @@ position = Vector2( 1430.91, 653.083 )
 leafe_sprite = ExtResource( 17 )
 
 [node name="Leaf62" parent="Leafs" instance=ExtResource( 15 )]
-position = Vector2( 1465.36, 741.483 )
+position = Vector2( 1452.89, 746.828 )
 leafe_sprite = ExtResource( 17 )
 
 [node name="Leaf63" parent="Leafs" instance=ExtResource( 15 )]
-position = Vector2( 1549.27, 632.107 )
+position = Vector2( 1543.92, 635.671 )
 leafe_sprite = ExtResource( 16 )
 
 [node name="Leaf64" parent="Leafs" instance=ExtResource( 15 )]
@@ -445,21 +443,24 @@ wait_time = 0.5
 
 [node name="Tutorial1" parent="Tutorials" instance=ExtResource( 20 )]
 title = "How to play"
-text = "Click/tap and drag to chose dinopult strength & angle.
+text = "[b]Click/tap[/b] and drag to chose dinopult [b]strength & angle[/b].
 
-Collect all the leafs!"
+Collect [b]all[/b] the leafs!"
 
 [node name="Tutorial2" parent="Tutorials" instance=ExtResource( 20 )]
 title = "Changing direction"
-text = "Click/tap to make your little dino change direction mid air by flailing its little limbs.
+text = "[b]Click/tap[/b] to make your little dino [b]change direction[/b] mid air by flailing its little limbs.
 
 "
 
 [node name="Tutorial3" parent="Tutorials" instance=ExtResource( 20 )]
 title = "Going again"
-text = "Make sure you get back to the catapult before you stop moving.
+text = "Make sure you [b]get back to the catapult[/b] before you stop moving.
 
-If you get stuck, just use the RETRY button."
+[b]If you get stuck[/b], just use the [b]RETRY[/b] button."
+
+[node name="EndOfLevelTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="fired" from="Catapult" to="." method="_on_Catapult_fired"]
 [connection signal="pressed" from="UI/Button" to="." method="_on_Button_pressed"]

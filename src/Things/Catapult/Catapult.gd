@@ -29,7 +29,7 @@ func reset():
 	update_elastic(Vector2.ZERO)
 	is_pulling = false
 	player_in = true
-	
+
 
 func sleep(is_sleeping: bool):
 	is_allowed_to_fire = not is_sleeping
@@ -39,17 +39,17 @@ func sleep(is_sleeping: bool):
 func _process(delta):
 	if not is_pulling and not player_in:
 		return
-	
+
 	make_player_stick()
 	_player.transform.origin = get_pull_dist()
-	
+
 	update_elastic(_player.position)
 
 
 func _input(event):
 	if not event as InputEventMouseButton:
 		return
-	
+
 	if not is_allowed_to_fire:
 		return
 
@@ -57,23 +57,23 @@ func _input(event):
 		is_pulling = true
 		click_position = get_viewport().get_mouse_position()
 		_audio.play()
-		
+
 	if is_pulling and not event.pressed:
 		if get_pull_dist().length() < 10:
 			make_player_stick()
 			return
-		
+
 		_player.launche(-get_pull_dist() * 15)
-		
+
 		_fire_audio.play()
 		_audio.stop()
-	
+
 		is_pulling = false
 		player_in = false
-		
+
 		_elastic_return_tween.interpolate_method(self, "update_elastic", _player.position, Vector2.ZERO, .8, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		_elastic_return_tween.start()
-		
+
 		emit_signal("fired")
 
 
@@ -82,14 +82,10 @@ func update_elastic(mid: Vector2):
 	_elastic_back.points = PoolVector2Array([_elastic_right_end.position, mid])
 
 
-func _on_ClickArea_input_event(viewport, event, shape_idx):
-	pass
-
-
 func get_pull_dist():
 	if not is_pulling:
 		return Vector2.ZERO
-	
+
 	var mouse_dist = get_viewport().get_mouse_position() - click_position
 	return mouse_dist.clamped(MAX_DIST)
 
@@ -106,10 +102,10 @@ func make_player_stick():
 func _on_ClickArea_body_entered(body):
 	if player_in:
 		return
-	
+
 	_player.set_on_catapult()
 	_elastic_return_tween.interpolate_property(_player, "global_transform:origin", _player.global_transform.origin, position, .2, Tween.TRANS_BACK, Tween.EASE_OUT)
 	_elastic_return_tween.start()
 	yield(_elastic_return_tween, "tween_all_completed")
-	
+
 	make_player_stick()

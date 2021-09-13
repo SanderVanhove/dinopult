@@ -23,7 +23,7 @@ func _ready():
 
 func _process(delta):
 	visuals.scale.x = -1 if linear_velocity.x < 0 else 1
-	
+
 	if get_colliding_bodies().size() and oof_timer.is_stopped() and not did_oof:
 		fall_sound.play()
 		oof_timer.start()
@@ -35,9 +35,9 @@ func _process(delta):
 func launche(force: Vector2):
 	apply_central_impulse(force)
 	ground_col_timer.start()
-	
+
 	is_launched = true
-	
+
 	whee_sound.play()
 
 
@@ -52,7 +52,7 @@ func set_on_catapult():
 func sleep(is_sleeping):
 	sleeping = is_sleeping
 	can_turn = not is_sleeping
-	
+
 	if is_sleeping:
 		movement_before_sleep = linear_velocity
 	else:
@@ -64,12 +64,12 @@ func _input(event):
 		return
 	if not is_launched or not can_turn:
 		return
-		
+
 	turn_sound.play()
-		
+
 	linear_velocity = linear_velocity.reflect(Vector2(0, 1))
 	linear_velocity *= .9
-	
+
 	animation_player.play("swing")
 	yield(animation_player, "animation_finished")
 	animation_player.play("idle")

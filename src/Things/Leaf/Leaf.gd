@@ -28,14 +28,14 @@ func reset():
 func _on_Area2D_body_entered(body):
 	if not sprite.visible:
 		return
-		
+
 	emit_signal("collected")
-	
+
 	bite_sound.play()
-	
+
 	sprite.visible = false
 	area.monitoring = false
 	area.monitorable = false
-	
+
 	particles1.emitting = true
 	particles2.emitting = true

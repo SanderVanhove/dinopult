@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Shaders/wind.gdshader" type="Shader" id=1]
+[ext_resource path="res://Shaders/wind.shader" type="Shader" id=1]
 [ext_resource path="res://Things/UI/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Things/UI/BalsamiqSans-Italic.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Screens/Level/foreground_bushes.png" type="Texture" id=4]
@@ -66,13 +66,13 @@ shader_param/distortion = 1.0
 shader_param/heightOffset = 0.791
 shader_param/offset = 0.0
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=6]
 size = 155
 outline_size = 9
 outline_color = Color( 0.337255, 0.313726, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=7]
 size = 36
 outline_color = Color( 0.0235294, 0.0745098, 0.568627, 1 )
 font_data = ExtResource( 3 )
@@ -147,7 +147,7 @@ custom_constants/separation = 2
 [node name="Title" type="Label" parent="Control/CenterContainer/VBoxContainer/VBoxContainer"]
 margin_right = 587.0
 margin_bottom = 187.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Dinopult"
 
 [node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/VBoxContainer"]
@@ -156,7 +156,7 @@ margin_right = 587.0
 margin_bottom = 233.0
 mouse_filter = 0
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.470588, 0.85098, 1, 1 )
 text = "By @SanderVhove"
 align = 2

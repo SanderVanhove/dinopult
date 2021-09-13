@@ -126,28 +126,28 @@ tracks/3/keys = {
 [sub_resource type="CircleShape2D" id=3]
 radius = 32.6605
 
-[sub_resource type="AudioStreamRandomPitch" id=9]
+[sub_resource type="AudioStreamRandomPitch" id=4]
 audio_stream = ExtResource( 15 )
 
-[sub_resource type="AudioStreamRandomPitch" id=10]
+[sub_resource type="AudioStreamRandomPitch" id=5]
 audio_stream = ExtResource( 14 )
 
-[sub_resource type="AudioStreamRandomPitch" id=11]
+[sub_resource type="AudioStreamRandomPitch" id=6]
 audio_stream = ExtResource( 13 )
 
-[sub_resource type="AudioStreamRandomPitch" id=5]
+[sub_resource type="AudioStreamRandomPitch" id=7]
 audio_stream = ExtResource( 9 )
 
-[sub_resource type="AudioStreamRandomPitch" id=6]
+[sub_resource type="AudioStreamRandomPitch" id=8]
 audio_stream = ExtResource( 11 )
 
-[sub_resource type="AudioStreamRandomPitch" id=7]
+[sub_resource type="AudioStreamRandomPitch" id=9]
 audio_stream = ExtResource( 10 )
 
-[sub_resource type="AudioStreamRandomPitch" id=8]
+[sub_resource type="AudioStreamRandomPitch" id=10]
 audio_stream = ExtResource( 12 )
 
-[sub_resource type="AudioStreamRandomPitch" id=4]
+[sub_resource type="AudioStreamRandomPitch" id=11]
 audio_stream = ExtResource( 7 )
 
 [sub_resource type="AudioStreamRandomPitch" id=12]
@@ -207,37 +207,37 @@ one_shot = true
 [node name="WheeSound" parent="." instance=ExtResource( 8 )]
 
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="WheeSound"]
-stream = SubResource( 9 )
+stream = SubResource( 4 )
 volume_db = 15.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WheeSound"]
-stream = SubResource( 10 )
+stream = SubResource( 5 )
 volume_db = 15.0
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="WheeSound"]
-stream = SubResource( 11 )
+stream = SubResource( 6 )
 volume_db = 15.0
 
 [node name="TurnSound" parent="." instance=ExtResource( 8 )]
 
 [node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="TurnSound"]
-stream = SubResource( 5 )
-volume_db = 10.0
-
-[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="TurnSound"]
-stream = SubResource( 6 )
-volume_db = 10.0
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="TurnSound"]
 stream = SubResource( 7 )
 volume_db = 10.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TurnSound"]
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="TurnSound"]
 stream = SubResource( 8 )
 volume_db = 10.0
 
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 9 )
+volume_db = 10.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TurnSound"]
+stream = SubResource( 10 )
+volume_db = 10.0
+
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="TurnSound"]
-stream = SubResource( 4 )
+stream = SubResource( 11 )
 volume_db = 10.0
 
 [node name="FallSound" parent="." instance=ExtResource( 8 )]

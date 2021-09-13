@@ -14,13 +14,13 @@ onready var _text: RichTextLabel = $CenterContainer/PanelContainer/MarginContain
 
 func _ready():
 	_title.text = title
-	_text.text = text
+	_text.bbcode_text = text
 
 
 func _on_Control_gui_input(event):
 	if not event as InputEventMouseButton or event.pressed:
 		return
-	
+
 	get_tree().set_input_as_handled()
 	emit_signal("clicked")
 	queue_free()
@@ -28,5 +28,5 @@ func _on_Control_gui_input(event):
 
 func show_up():
 	show()
-	
+
 	yield(self, "clicked")
