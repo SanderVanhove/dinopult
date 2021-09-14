@@ -5,6 +5,7 @@ export(String, FILE) var nextScene
 
 
 onready var _tween: Tween = $Tween
+onready var _timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -14,6 +15,8 @@ func _ready() -> void:
 
 
 func _on_StorySlide_gui_input(event: InputEvent) -> void:
+	if not _timer.is_stopped():
+		return
 	if not event as InputEventMouseButton or event.pressed:
 		return
 

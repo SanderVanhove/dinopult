@@ -70,7 +70,7 @@ shader_param/offset = 0.0
 [sub_resource type="DynamicFont" id=6]
 size = 155
 outline_size = 9
-outline_color = Color( 0.337255, 0.313726, 0, 1 )
+outline_color = Color( 0.337255, 0.156863, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
