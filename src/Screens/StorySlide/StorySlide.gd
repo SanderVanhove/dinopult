@@ -17,7 +17,7 @@ func _ready() -> void:
 func _on_StorySlide_gui_input(event: InputEvent) -> void:
 	if not _timer.is_stopped():
 		return
-	if not event as InputEventMouseButton or event.pressed:
+	if not event.is_action_pressed("click"):
 		return
 
 	_tween.interpolate_property(self, "modulate:a", 1, 0, .3, Tween.TRANS_SINE, Tween.EASE_IN)

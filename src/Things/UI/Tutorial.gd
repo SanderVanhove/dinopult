@@ -18,8 +18,8 @@ func _ready():
 	_text.bbcode_text = text
 
 
-func _on_Control_gui_input(event):
-	if not event as InputEventMouseButton or event.pressed:
+func _on_Control_gui_input(event: InputEvent):
+	if not event.is_action_pressed("click"):
 		return
 
 	get_tree().set_input_as_handled()

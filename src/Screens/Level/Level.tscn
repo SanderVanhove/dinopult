@@ -156,12 +156,12 @@ margin_top = 64.1447
 margin_right = 253.654
 margin_bottom = 144.145
 mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 8 )
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/focus = ExtResource( 12 )
 custom_styles/disabled = ExtResource( 12 )
 custom_styles/normal = ExtResource( 12 )
-custom_fonts/font = SubResource( 8 )
 text = "RETRY"
 __meta__ = {
 "_edit_use_anchors_": false
